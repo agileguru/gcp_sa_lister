@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/DECORATION/1.7.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.7.0 http://maven.apache.org/xsd/decoration-1.7.0.xsd">
+    <bannerLeft>
+        <name>Alacrity</name>
+        <href>http://www.alacritysys.com/</href>
+    </bannerLeft>
+
+    <skin>
+        <groupId>org.apache.maven.skins</groupId>
+        <artifactId>maven-fluido-skin</artifactId>
+        <version>1.12.0</version>
+    </skin>
+    <custom>
+        <fluidoSkin>
+            <sourceLineNumbersEnabled>true</sourceLineNumbersEnabled>
+            <breadcrumbDivider>»</breadcrumbDivider>
+        </fluidoSkin>
+    </custom>
+    <publishDate position="right"/>
+    <version position="right"/>
+    <body>
+        <breadcrumbs>
+            <item name="Projects" href="http://devops.alacritysys.com/api"/>
+            <item name="${project.name}" href="http://devops.alacritysys.com/api/${project.artifactId}/"/>
+        </breadcrumbs>
+        <menu ref="reports"/>
+            
+    </body>
+</project>
