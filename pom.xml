@@ -53,24 +53,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <distributionManagement>
-        <snapshotRepository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>snapshots</id>
-            <name>snapshots</name>
-            <url>${snapshot.deploy.repo}</url>
-        </snapshotRepository>
-        <repository>
-            <uniqueVersion>false</uniqueVersion>
-            <id>release</id>
-            <name>release</name>
-            <url>${release.deploy.repo}</url>
-        </repository>
-        <site>
-            <id>playground.api</id>
-            <url>${api.site.base}/${project.artifactId}</url>
-        </site>
-    </distributionManagement>
     <build>
         <plugins>
             <plugin>
