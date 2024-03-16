@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 
-public class DefaultControllerTest {
+class DefaultControllerTest {
 
 	private DefaultController controller = new DefaultController();
 	
