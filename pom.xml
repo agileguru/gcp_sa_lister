@@ -29,6 +29,12 @@
         <maven.compiler.target>21</maven.compiler.target>
         <platform.version>1.0-SNAPSHOT</platform.version>
 		<java.version>21</java.version>
+		<app.base.image>${docker.base.name}/polygot:main</app.base.image>
+		<app.image>${docker.base.name}/${project.artifactId}</app.image>
+		<app.location>/app</app.location>
+		<app.artifact>${project.artifactId}-${project.version}.jar</app.artifact>
+		<app.cmd>java -jar ${app.artifact}</app.cmd>
+		<app.port>8080</app.port>
     </properties>
 
     <dependencyManagement>
@@ -63,6 +69,21 @@
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>io.github.git-commit-id</groupId>
+                <artifactId>git-commit-id-maven-plugin</artifactId>
+                <configuration>
+                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>revision</goal>
+                        </goals>
+                        <phase>validate</phase>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -99,10 +120,11 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <executions>
                     <execution>
+                        <id>package-app</id>
                         <goals>
                             <goal>repackage</goal>
                         </goals>
-                        <phase>install</phase>
+                        <phase>package</phase>
                     </execution>
                 </executions>
             </plugin>
@@ -113,6 +135,58 @@
             <plugin>
                 <groupId>org.eclipse.jkube</groupId>
                 <artifactId>kubernetes-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <images>
+                        <image>
+                            <name>${app.image}</name>
+                            <build>
+                                <from>${app.base.image}</from>
+                                <tags>
+                                    <tag>${git.branch}</tag>
+                                    <tag>${project.version}</tag>
+                                </tags>
+                                <assembly>
+                                    <mode>dir</mode>
+                                    <targetDir>${app.location}</targetDir>
+                                    <inline>
+                                        <id>copy-jar</id>
+                                        <baseDirectory>${app.location}</baseDirectory>
+                                        <files>
+                                            <file>
+                                                <source>
+                                                    ${project.build.directory}/${app.artifact}
+                                                </source>
+                                                <outputDirectory>.</outputDirectory>
+                                            </file>
+                                        </files>
+                                    </inline>    
+                                </assembly>
+                                <workdir>${app.location}</workdir>
+                                <cmd>${app.cmd}</cmd>
+                                <ports>
+                                    <port>${app.port}</port>
+                                </ports>
+                            </build>
+                        </image>
+                    </images>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>build-on-package</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>push-on-deploy</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         <extensions>

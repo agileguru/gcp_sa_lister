@@ -9,7 +9,7 @@ public class DefaultController {
 
 	@GetMapping("/")
 	public ResponseEntity<String> sayHello() {
-		return ResponseEntity.ok("I Really Need Coffee");
+		return ResponseEntity.ok("I Really Love Java as it has a coffee icon");
 	}
 
 }
