@@ -35,6 +35,7 @@
 		<app.artifact>${project.artifactId}-${project.version}.jar</app.artifact>
 		<app.cmd>java -jar ${app.artifact}</app.cmd>
 		<app.port>8080</app.port>
+		<cucumber.json>cucumber.json</cucumber.json>
     </properties>
 
     <dependencyManagement>
@@ -223,6 +224,16 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>net.masterthought</groupId>
+                <artifactId>maven-cucumber-reporting</artifactId>
+                <configuration>
+                    <inputDirectory>${project.build.directory}</inputDirectory>
+                    <jsonFiles>
+                       <param>${cucumber.json}</param>                   
+                    </jsonFiles>
+                </configuration>
             </plugin>
         </plugins>
         <extensions>

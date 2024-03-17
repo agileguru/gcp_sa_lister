@@ -24,6 +24,9 @@
             <item name="${project.name}" href="http://devops.alacritysys.com/api/${project.artifactId}/"/>
         </breadcrumbs>
         <menu ref="reports"/>
+        <menu name="Tests">
+            <item name="Cucumber" href="cucumber-reports/cucumber-html-reports/overview-features.html"/>
+        </menu>
             
     </body>
 </project>
