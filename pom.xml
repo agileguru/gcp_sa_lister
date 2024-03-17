@@ -36,6 +36,7 @@
 		<app.cmd>java -jar ${app.artifact}</app.cmd>
 		<app.port>8080</app.port>
 		<cucumber.json>cucumber.json</cucumber.json>
+		<project.group>${project.groupId}</project.group>
     </properties>
 
     <dependencyManagement>
