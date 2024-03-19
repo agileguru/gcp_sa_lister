@@ -37,6 +37,7 @@
 		<app.port>8080</app.port>
 		<cucumber.json>cucumber.json</cucumber.json>
 		<project.group>${project.groupId}</project.group>
+		<sonar.qualitygate.wait>true</sonar.qualitygate.wait>
     </properties>
 
     <dependencyManagement>
