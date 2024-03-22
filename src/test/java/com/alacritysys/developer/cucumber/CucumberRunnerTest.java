@@ -10,10 +10,10 @@ import org.junit.platform.suite.api.Suite;
 @Suite
 @IncludeEngines("cucumber")
 @SelectPackages("com.alacritysys.developer.cucumber")
-public class CucumberRunnerTest {
+class CucumberRunnerTest {
 
 	@Test
-	public void testCucumberWorks() {
+	 void testCucumberWorks() {
 		Assertions.assertThat(this.getClass().getAnnotations()).isNotEmpty();
 	}
 }
