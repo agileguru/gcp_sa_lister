@@ -25,20 +25,22 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <plugins.spring.boot>3.2.4</plugins.spring.boot>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <platform.version>1.0-SNAPSHOT</platform.version>
-		<java.version>21</java.version>
-		<app.base.image>${docker.base.name}/polygot:main</app.base.image>
-		<app.image>${docker.base.name}/${project.artifactId}</app.image>
-		<app.location>/app</app.location>
-		<app.artifact>${project.artifactId}-${project.version}.jar</app.artifact>
-		<app.cmd>java -jar ${app.artifact}</app.cmd>
-		<app.port>8080</app.port>
-		<cucumber.json>cucumber.json</cucumber.json>
-		<project.group>${project.groupId}</project.group>
-		<sonar.qualitygate.wait>true</sonar.qualitygate.wait>
-         <sonar.coverage.exclusions>src/main/java/com/alacritysys/developer/App.java</sonar.coverage.exclusions>
+        <java.version>21</java.version>
+        <app.base.image>${docker.base.name}/polygot:main</app.base.image>
+        <app.image>${docker.base.name}/${project.artifactId}</app.image>
+        <app.location>/app</app.location>
+        <app.artifact>${project.artifactId}-${project.version}.jar</app.artifact>
+        <app.cmd>java -jar ${app.artifact}</app.cmd>
+        <app.port>8080</app.port>
+        <cucumber.json>cucumber.json</cucumber.json>
+        <project.group>${project.groupId}</project.group>
+        <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
+        <sonar.coverage.exclusions>
+            src/main/java/com/alacritysys/developer/App.java</sonar.coverage.exclusions>
     </properties>
 
     <dependencyManagement>
@@ -69,6 +71,23 @@
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-resourcemanager</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.auth</groupId>
+            <artifactId>google-auth-library-oauth2-http</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.apis</groupId>
+            <artifactId>google-api-services-iam</artifactId>
+            <version>v1-rev20240118-2.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.cloud</groupId>
+            <artifactId>google-cloud-iamcredentials</artifactId>
         </dependency>
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -200,7 +219,7 @@
                                                 <outputDirectory>.</outputDirectory>
                                             </file>
                                         </files>
-                                    </inline>    
+                                    </inline>
                                 </assembly>
                                 <workdir>${app.location}</workdir>
                                 <cmd>${app.cmd}</cmd>
@@ -234,7 +253,7 @@
                 <configuration>
                     <inputDirectory>${project.build.directory}</inputDirectory>
                     <jsonFiles>
-                       <param>${cucumber.json}</param>                   
+                        <param>${cucumber.json}</param>
                     </jsonFiles>
                 </configuration>
             </plugin>
@@ -252,7 +271,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                 <configuration>
+                <configuration>
                     <failOnError>false</failOnError>
                     <failOnWarnings>false</failOnWarnings>
                 </configuration>
