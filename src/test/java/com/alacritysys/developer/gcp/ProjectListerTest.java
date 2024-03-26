@@ -42,6 +42,7 @@ class ProjectListerTest {
 	}
 
 	@Test
+	@Disabled("For Debugging purpose")
 	void testServiceKeysListing() throws IOException, GeneralSecurityException {
 		GoogleCredentials credentials = getCredentials();
 		Iterable<Project> projects = lister.listProjects(credentials, "959854286594");

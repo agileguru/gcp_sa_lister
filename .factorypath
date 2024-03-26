@@ -92,4 +92,7 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/com/google/api/gax-httpjson/2.45.0/gax-httpjson-2.45.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/google/api/gax/2.45.0/gax-2.45.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/google/auth/google-auth-library-oauth2-http/1.23.0/google-auth-library-oauth2-http-1.23.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/google/apis/google-api-services-iam/v1-rev20240118-2.0.0/google-api-services-iam-v1-rev20240118-2.0.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/google/cloud/google-cloud-iamcredentials/2.37.0/google-cloud-iamcredentials-2.37.0.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/google/api/grpc/proto-google-cloud-iamcredentials-v1/2.37.0/proto-google-cloud-iamcredentials-v1-2.37.0.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>
