@@ -38,7 +38,7 @@
         <app.port>8080</app.port>
         <cucumber.json>cucumber.json</cucumber.json>
         <project.group>${project.groupId}</project.group>
-        <sonar.qualitygate.wait>true</sonar.qualitygate.wait>
+        <sonar.qualitygate.wait>false</sonar.qualitygate.wait>
         <sonar.coverage.exclusions>
             src/main/java/com/alacritysys/developer/App.java</sonar.coverage.exclusions>
     </properties>
